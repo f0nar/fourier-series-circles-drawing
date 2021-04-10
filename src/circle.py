@@ -54,7 +54,7 @@ def circle(center=[0,0,0], r=1, sectors=100, triangle_fan=True, line_loop=True):
     a_pos = 'a_position'
     v_type = [(a_pos, np.float32, 3)]
 
-    outline =np.array(circle_outline_indices(sectors, triangle_fan, line_loop), dtype=np.uint32)
+    outline = np.array(circle_outline_indices(sectors, triangle_fan, line_loop), dtype=np.uint32)
     indices = np.array(circle_indices(sectors, triangle_fan), dtype=np.uint32)
     path = np.array(circle_path(center, r, sectors), dtype=float)
     vertices = np.zeros(path.shape[0], v_type)
@@ -65,4 +65,3 @@ def circle(center=[0,0,0], r=1, sectors=100, triangle_fan=True, line_loop=True):
     vertices = vertices.view(gloo.VertexBuffer)
 
     return vertices, indices, outline
-
